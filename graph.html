@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>Happy Mates</title>
+
+    <link class="include" rel="stylesheet" type="text/css" href="jquery.jqplot.min.css" />
+
+  
+    <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="../excanvas.js"></script><![endif]-->
+    <script class="include" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+   
+</head>
+<body>
+    
+    
+
+  
+<!-- Example scripts go here -->
+
+    
+
+    <style type="text/css">
+        .jqplot-target {
+            margin: 20px;
+            height: 340px;
+            width: 600px;
+            color: #dddddd;
+        }
+
+        .ui-widget-content {
+            background: rgb(57,57,57);
+        }
+
+        table.jqplot-table-legend {
+            border: 0px;
+            background-color: rgba(100,100,100, 0.0);
+        }
+
+        .jqplot-highlighter-tooltip {
+            background-color: rgba(57,57,57, 0.9);
+            padding: 7px;
+            color: #dddddd;
+        }
+
+
+
+    </style>
+
+    <div class="ui-widget ui-corner-all">
+        <div class="ui-widget-header ui-corner-top">Mood Trend</div>
+        <div class="ui-widget-content ui-corner-bottom" >
+            <div id="chart1"></div>
+        </div>
+    </div>
+
+
+    <script class="code" type="text/javascript">
+
+        $(document).ready(function () {
+            $.jqplot._noToImageButton = true;
+
+            var currYear = [["2013-03-01",0.01], ["2013-03-02",0.5], ["2013-03-03",0.8], ["2013-03-04",0.48], 
+            ["2013-03-05",-0.36], ["2013-03-06",-0.47], ["2013-03-07",-0.82], ["2013-03-08",-0.55], ["2013-03-09",0.19], 
+            ["2013-03-10",1], ["2013-03-11",0.68], ["2013-03-12",0.65], ["2013-03-13",0.26], ["2013-03-14",0.55],
+            ["2013-03-15",0.86], ["2013-03-16",0.05], ["2013-03-17",-0.25], ["2013-03-18",-0.98], ["2013-03-19",-0.67], 
+            ["2013-03-20",-0.23], ["2013-03-21",0], ["2013-03-22",0.25], ["2013-03-23",0.8], ["2013-03-24",0.5], 
+            ["2013-03-25",0.14], ["2013-03-26",0.01], ["2013-03-27",-0.63], ["2013-03-28",0.01], ["2013-03-29",-0.35], 
+            ["2013-03-30",0.58], ["2013-03-31",0.7]];
+
+            var plot1 = $.jqplot("chart1", [currYear], {
+                seriesColors: ["rgb(211, 235, 59)"],
+                title: "Ivy Chen's Mood",
+                highlighter: {
+                    show: true,
+                    sizeAdjust: 1,
+                    tooltipOffset: 9
+                },
+                grid: {
+                    background: 'rgba(57,57,57,0.0)',
+                    drawBorder: false,
+                    shadow: false,
+                    gridLineColor: '#666666',
+                    gridLineWidth: 2
+                },
+                legend: {
+                    show: true,
+                    placement: 'outside'
+                },
+                seriesDefaults: {
+                    rendererOptions: {
+                        smooth: true,
+                        animation: {
+                            show: true
+                        }
+                    },
+                    showMarker: false
+                },
+                series: [
+                    
+                    {   
+	                    
+                        label: 'Ivy'
+                    }
+                ],
+                axesDefaults: {
+                    rendererOptions: {
+                        baselineWidth: 1.5,
+                        baselineColor: '#444444',
+                        drawBaseline: false
+                    }
+                },
+                axes: {
+                    xaxis: {
+                        renderer: $.jqplot.DateAxisRenderer,
+                        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                        tickOptions: {
+                            formatString: "%b %e",
+                            angle: -30,
+                            textColor: '#dddddd'
+                        },
+                        //min: "2013-03-01",
+                        //max: "2013-03-31",
+                        tickInterval: "5 days",
+                        drawMajorGridlines: false
+                    },
+                    yaxis: {
+                        renderer: $.jqplot.LinearAxisRenderer,
+                        //pad: 0,
+                        
+                        rendererOptions: {
+                            minorTicks: 0.01
+                        },
+                        tickOptions: {
+                            formatString: "%'s",
+                            showMark: false
+                        },
+                        forceTickAt0: true,
+                        tickInterval: 1,
+                        min: -1,
+                        max: 1
+                    }
+                }
+            });
+
+              $('.jqplot-highlighter-tooltip').addClass('ui-corner-all')
+        });
+
+
+    </script>
+<!-- End example scripts -->
+
+<!-- Don't touch this! -->
+
+
+    <script class="include" type="text/javascript" src="jquery.jqplot.min.js"></script>
+
+<!-- Additional plugins go here -->
+
+  <script class="include" type="text/javascript" src="plugins/jqplot.dateAxisRenderer.min.js"></script>
+  <script class="include" type="text/javascript" src="plugins/jqplot.logAxisRenderer.min.js"></script>
+  <script class="include" type="text/javascript" src="plugins/jqplot.canvasTextRenderer.min.js"></script>
+  <script class="include" type="text/javascript" src="plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+  <script class="include" type="text/javascript" src="plugins/jqplot.highlighter.min.js"></script>
+
+<!-- End additional plugins -->
+
+
+</body>
+
+
+</html>
+
+
